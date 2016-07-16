@@ -1,0 +1,9 @@
+
+
+
+-Screen Cap of Graphs to use as icon
+
+=======Needed From Kirk
+-Picture for sensors/Arduino icon
+-Picture for Pis icon
+-Picture for "what is this project?" icon

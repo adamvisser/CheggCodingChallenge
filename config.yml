@@ -1,0 +1,39 @@
+#I have been reusing this same config since panini came out.... and im in a hurry
+# Your project's server will run on localhost:xxxx at this port
+PORT: 8000
+
+# Autoprefixer will make sure your CSS works with these browsers
+COMPATIBILITY:
+  - "last 2 versions"
+  - "ie >= 9"
+
+# UnCSS will use these settings
+UNCSS_OPTIONS:
+  html:
+    - "src/**/*.html"
+  ignore:
+    - !!js/regexp ^\.is-.*
+
+# Gulp will reference these paths when it copies files
+PATHS:
+  # Paths to static assets that aren't images, CSS, or JavaScript
+  assets:
+    - "src/assets/**/*"
+    - "src/index.html"
+    - "!src/assets/{img,js,scss}/**/*"
+  templates:
+    - "src/views/**/*"
+  extracss:
+    - "src/assets/css/semantic.min.css"
+  # Paths to Sass libraries, which can then be loaded with @import
+  sass:
+    - "src/assets/scss/app.scss"
+  # Paths to JavaScript libraries, which are compined into one file
+  javascript:
+    # Paths to your own project code are here
+    - "src/assets/js/*.js"
+    - "src/assets/js/FormObservers/*.js"
+    - "src/assets/js/UsernameFactories/*.js"
+    - "src/assets/js/JSONServices/*.js"
+    #- "src/assets/js/app.js"
+
