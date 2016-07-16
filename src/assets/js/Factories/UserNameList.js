@@ -32,12 +32,13 @@ function getUserNameList(forRequest = false) {
 		//lets make sure that this scope has the ability to foreach over the array we are about to create
 		//without having to create the function in line
 		function addUserName(item){
-			returnString.concat(item);
-			returnString.concat(",");
+			console.log(item);
+			returnString = returnString.concat(item);
+			returnString = returnString.concat(",");
 		}
 		window.USERNAMELIST.usernameList.forEach(addUserName)
-		console.log('built the username string for the request');
-		return returnString.substring(0, returnString.length-1);
+		returnString = returnString.substring(0, returnString.length-1)
+		return returnString;
 	}
 
 	if(forRequest){
@@ -55,7 +56,8 @@ function getUserNameList(forRequest = false) {
 function populateUseableUserNameListFromService() {
 	// TODO check the below runs correctly
 	setupUserNameList();
-	if (!userNameLength()) {
+	if (userNameLength() < 1) {
+		console.log('no useable usernames pregenerated!');
 		noUseableUsernamesAddNumbers();
 	}
 	// TODO use the json service to send a request using the usernameList from window scope
@@ -65,21 +67,35 @@ function populateUseableUserNameListFromService() {
 
 //this is the fucntion that ajax calls when it successfullly recieves a response
 function populateUseableUserNameList(data) {
+	var inputUserNameIsAvailable = true;
+	function mapDataToUserNameArray(value, index){
+		return value.username;
+	}
 	function setupBadUserName(item){
-		window.USERNAMELIST.badUserNames.push(string(item.username));
+		if (getFormValue() == item) {
+			inputUserNameIsAvailable = false;
+		}
+		window.USERNAMELIST.badUserNames.push(String(item));
 	}
 
 	function setupGoodUserName(item){
-		if (window.USERNAMELIST.badUserNames.indexOf(string(item.username))  == -1) {
-			window.USERNAMELIST.goodUserNames.push(string(item.username));
+		if (window.USERNAMELIST.badUserNames.indexOf(String(item))  == -1) {
+			window.USERNAMELIST.goodUserNames.push(String(item));
 		}
 	}
+	//dont forget you cant iterate blindly over an object like this is mongo adam!!!!
+	data = $.map(data, mapDataToUserNameArray);
 	// TODO check the below runs correctly
 	setupUserNameList();
 	data.forEach(setupBadUserName);
-	data.forEach(setupGoodUserName);
+	window.USERNAMELIST.usernameList.forEach(setupGoodUserName);
 	window.USERNAMELIST.usernameList = []
 	// TODO from response put list of good usernames in place
+	if (inputUserNameIsAvailable) {
+		tellViewNameIsAvailable();
+	} else {
+		tellViewNameIsUnAvailable();
+	}
 	tellViewRequestIsDone(window.USERNAMELIST.goodUserNames);
 }
 
@@ -88,8 +104,7 @@ function addNameToList(name){
 	// TODO check the below runs correctly
 	setupUserNameList();
 	//again casing as string cuz ive put no time into error handline
-	window.USERNAMELIST.usernameList.push(string(name));
-	console.log('added a possible username for use');
+	window.USERNAMELIST.usernameList.push(String(name));
 }
 
 //this is used by the ajax response function to add in names that wont work

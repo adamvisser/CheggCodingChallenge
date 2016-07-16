@@ -30,7 +30,7 @@ PATHS:
   javascript:
     # Paths to your own project code are here
     - "src/assets/js/*.js"
-    - "src/assets/js/FormObservers/*.js"
+    - "src/assets/js/Observers/*.js"
     - "src/assets/js/Factories/*.js"
     - "src/assets/js/JSONServices/*.js"
     #- "src/assets/js/app.js"

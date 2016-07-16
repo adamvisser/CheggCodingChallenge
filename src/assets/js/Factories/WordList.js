@@ -24,15 +24,17 @@ function noUseableUsernamesAddNumbers(){
 	var randomModifer = Math.floor( Math.random() * 100 );
 	var randomDivider = Math.floor( Math.random() * 10 );
 	var randomNumbers = [
-		string(randomNumber),
-		string(randomNumber + randomModifer),
-		string(randomNumber - randomModifer),
-		string((randomNumber + randomModifer) / randomDivider ),
-		string((randomNumber - randomModifer)  / randomDivider ),
+		String(randomNumber),
+		String(randomNumber + randomModifer),
+		String(randomNumber - randomModifer),
+		String(Math.floor((randomNumber + randomModifer) / randomDivider )),
+		String(Math.floor((randomNumber - randomModifer)  / randomDivider )),
 	]
 	//then we need to get the username itself, gonna cast as string cuz... i have no error handling like anywhere in here and im scared
-	var formWord = string(getFormValue());
+	var formWord = String(getFormValue());
 	randomNumbers.forEach(addRandomUserName);
+	//cant forget to add the one that the user already suggested since everything is empty!!!
+	addNameToList(formWord);
 }
 
 //one of the observers may have found a new word to use, check for it then add it in

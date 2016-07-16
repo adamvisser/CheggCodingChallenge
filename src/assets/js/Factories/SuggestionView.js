@@ -6,15 +6,28 @@ function tellViewRequestIsLoading() {
 }
 
 function tellViewRequestIsDone(names) {
+	var newHTML = ""
 	function addToIterateArray(name) {
-		var htmlToAdd = "<i class='red checkmark box icon'></i>".concat( name, "</br>");
-		var currentHTML = $("#username-suggestion-view").html();
-		//this rerenders all the things and its probably pretty horrible for sure
-		$("#username-suggestion-view").html(currentHTML.concat(htmlToAdd));
+		newHTML = newHTML.concat("<i class='green checkmark box icon'></i>".concat( name, "</br>"));
 	}
-	data.forEach(names);
+	names.forEach(addToIterateArray);
+	$("#username-suggestion-view").html(newHTML);
 }
 
 function tellViewInputIsEmpty() {
 	// body...
+}
+
+
+
+function tellViewNameIsAvailable(){
+	var newHTML = "<i class='red checkmark box icon'></i>".concat(getFormValue() );
+	newHTML = newHTML.concat(", is Available! Nit next to proced (or normally where the programmer would just auto move on to the next part)");
+	$("#username-availability").html(newHTML);
+}
+
+function tellViewNameIsUnAvailable(){
+	var newHTML = "<i class='red checkmark box icon'></i>".concat(getFormValue());
+	newHTML = newHTML.concat(", is Un-available! Please try a suggestion from below or try a new username!");
+	$("#username-availability").html(newHTML);
 }
