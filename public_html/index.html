@@ -3,8 +3,11 @@
 	<head>
 		<base href="http://chegg-tutors.appspot.com/" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" type="text/css" href="/public/styles.css" />
+		<link rel="stylesheet" type="text/css" href="/css/app.css" />
+		<link rel="stylesheet" type="text/css" href="/css/chegg.css" />
+		<link rel="stylesheet" type="text/css" href="/css/semantic.min.css" />
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+		<script src="/js/app.js"></script>
 	</head>
 
 
@@ -13,17 +16,19 @@
 
 
 
-	
+
 		<div id="chg-balloon-logo-container">
 			<img src="/img/logo.png" />
 		</div>
 		<div id="chg-balloon-controls-container">
 			<p>Enter a username to get started!</p>
-			<input id="chg-balloon-input" maxlength="2048" placeholder="e.g. BalloonMaster99"
+			<input id="chg-balloon-input" maxlength="2048" placeholder="e.g. Sharkfac3"
 				name="username" autocomplete="off" type="text" value="" />
 			<button id="chg-balloon-submit">Check availability</button>
 		</div>
-
+		<div id="username-suggestion-view">
+			
+		</div>
 
 
 
@@ -33,6 +38,7 @@
 			//I'll add in some things all over the place, 
 			//but I wont change the amount of javascript libraries that I am leveraging 
 			//as JavaScript what I am trying to showcase. Thanks!!!
+			//O also, please note that I did not use the grid funcationality that I get from semantic.min.css
 
 
 
@@ -52,6 +58,11 @@
 				//raw please thanks!!!
 				console.log(data);
 			  });
+			$("chg-balloon-input").change(function() {
+				// This is where you come in!!
+				//i came in like a wrecking ball
+				runObservers();
+			});
 			$("chg-balloon-submit").click(function() {
 				// This is where you come in!!
 				//i came in like a wrecking ball
