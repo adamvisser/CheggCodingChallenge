@@ -21,8 +21,8 @@ function tellViewInputIsEmpty() {
 
 
 function tellViewNameIsAvailable(){
-	var newHTML = "<i class='red checkmark box icon'></i>".concat(getFormValue() );
-	newHTML = newHTML.concat(", is Available! Nit next to proced (or normally where the programmer would just auto move on to the next part)");
+	var newHTML = "<i class='green checkmark box icon'></i>".concat(getFormValue() );
+	newHTML = newHTML.concat(", is Available! Hit next to proced (or normally where the programmer would just auto move on to the next part)");
 	$("#username-availability").html(newHTML);
 }
 
