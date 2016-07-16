@@ -36,10 +36,6 @@ function populateUseableUserNameListFromService() {
 	// TODO check the below runs correctly
 	setupUserNameList();
 	// TODO use the json service to send a request using the usernameList from window scope
-	// TODO upon recieve of response, remove all from usernameList
-	// TODO from response put list of bad usernames in place
-	// TODO from response put list of good usernames in place
-	// TODO return object of useable user names
 }
 
 

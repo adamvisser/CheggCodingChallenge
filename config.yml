@@ -18,9 +18,9 @@ UNCSS_OPTIONS:
 PATHS:
   # Paths to static assets that aren't images, CSS, or JavaScript
   assets:
-    - "!src/assets/{img,js,scss}/**/*"
     - "src/assets/**/*"
     - "src/index.html"
+    - "!src/assets/{img,js,scss}/**/*"
   extracss:
     - "src/assets/css/semantic.min.css"
   # Paths to Sass libraries, which can then be loaded with @import
