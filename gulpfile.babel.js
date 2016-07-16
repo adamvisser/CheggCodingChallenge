@@ -31,7 +31,7 @@ function loadConfig() {
 
 // Build the "dist" folder by running all of the below tasks
 gulp.task('build',
- gulp.series(clean, sass, javascript, images, copy));
+ gulp.series(clean, sass, javascript, images, copy, extracss));
 
 gulp.task('dev',
  gulp.series(server, watch));
@@ -54,6 +54,12 @@ function copy() {
   return gulp.src(PATHS.assets)
     .pipe(gulp.dest('public_html/'));
 }
+
+function extracss(){
+  return gulp.src(PATHS.extracss)
+    .pipe(gulp.dest('public_html/css'));
+}
+
 
 // Compile Sass into CSS
 // In production, the CSS is compressed
@@ -100,7 +106,7 @@ function images() {
 // Start a server with BrowserSync to preview the site in
 function server(done) {
   browser.init({
-    server: 'interface-build', port: PORT
+    server: 'public_html', port: PORT
   });
   done();
 }
