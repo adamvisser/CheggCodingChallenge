@@ -1,44 +1,38 @@
 <!doctype html>
-<html lang="en" ng-app="growbotix">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Growbotix - Interface</title>
-  <link href="/css/app.css" rel="stylesheet" type="text/css">
-  <link href="/css/semantic.min.css" rel="stylesheet" type="text/css">
-  <script src="/js/frameworks.js"></script>
-  <script src="/js/app.js"></script>
-</head>
-<body>
-	<div class="ui pointing menu">
-		<a id="homeLink" href="/#/" class="active item">
-		Home
-		</a>
-		<a id="growLabLink" href="/#/growlab" class="item">
-		GrowLab
-		</a>
-		<a id="contactUsLink" href="/#/contactus" class="item">
-		Contact Us
-		</a>
-		<div class="item">
-			<div class="ui transparent icon input">
-				<input type="text" placeholder="Search...">
-				<i class="search link icon"></i>
-			</div>
-		</div>
-		<div class="right menu">
-			<a id="sendToFriend" class="item">
-				Send this to a Friend
-			</a>
-			<a id="logout" href="/logout" class="active item">
-			Logout
-			</a>
-		</div>
-	</div>
-	<div class="ui segment">
-		<div class="ui grid" ng-view>
-			
-		</div>
-	</div>
-</body>
+<html lang="en">
+  <head>
+    <base href="http://chegg-tutors.appspot.com/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/public/styles.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  </head>
+  <body>
+    <div id="chg-balloon-logo-container">
+        <img src="/public/img/logo.png" />
+    </div>
+    <div id="chg-balloon-controls-container">
+        <p>Enter a username to get started!</p>
+        <input id="chg-balloon-input" maxlength="2048" placeholder="e.g. BalloonMaster99"
+            name="username" autocomplete="off" type="text" value="" />
+        <button id="chg-balloon-submit">Check availability</button>
+    </div>
+
+    <script type="text/javascript">
+        // The User search API accepts a comma-separated list of usernames, and returns
+        // user data for any matching records
+        $.ajax("/coding-challenge/api/user/?username=Hillary2016").done(function(data) {
+            // This logs Hillary2016's user data, since the username is registered
+            console.log(JSON.stringify(data));
+          });
+        $.ajax("/coding-challenge/api/user/?username=Trump4Pres,FeelTheBern1").done(function(data) {
+            // This logs Trump4Pres's user data, since the username is registered, but
+            // no user data for FeelTheBern1, since that username is not currently registered
+            console.log(JSON.stringify(data));
+          });
+        $("chg-balloon-submit").click(function() {
+            // This is where you come in!!
+        });
+    </script>
+
+  </body>
 </html>
